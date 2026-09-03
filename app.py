@@ -7,6 +7,10 @@ app = Flask(__name__)
 def home():
     return "Hello! Flask running on Docker."
 
+@app.route("/test")
+def home():
+    return "Hello! Flask running on Docker."
+
 
 @app.route("/health")
 def health():
