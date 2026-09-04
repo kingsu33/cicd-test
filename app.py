@@ -28,7 +28,7 @@ def home():
 
 
 @app.route("/test")
-def home():
+def test():
     return "Hello! Flask running on Docker."
 
 
