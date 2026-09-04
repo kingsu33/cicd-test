@@ -5,7 +5,27 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello! Flask running on Docker."
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>CI/CD Test</title>
+    </head>
+    <body>
+        <h1 id="message">Hello! Flask running on Docker.</h1>
+
+        <button onclick="changeMessage()">Click me!</button>
+
+        <script>
+            function changeMessage() {
+                document.getElementById("message").innerText =
+                    "Button clicked! CI/CD is working!";
+            }
+        </script>
+    </body>
+    </html>
+    """
+
 
 @app.route("/test")
 def home():
