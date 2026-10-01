@@ -9,25 +9,47 @@ latest_frame = None
 @app.route("/")
 def home():
     return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>CI/CD Test</title>
-    </head>
-    <body>
-        <h1 id="message">Hello! Flask running on Docker.</h1>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>DoorCam</title>
+        </head>
 
-        <button onclick="changeMessage()">Click me!</button>
+        <body>
 
-        <script>
-            function changeMessage() {
-                document.getElementById("message").innerText =
-                    "Button clicked! CI/CD is working!";
-            }
-        </script>
-    </body>
-    </html>
-    """
+            <h1>DoorCam</h1>
+
+            <button onclick="loadFrame()">
+                Get Latest Frame
+            </button>
+
+            <br><br>
+
+            <img
+                id="cameraFrame"
+                width="640"
+                height="480"
+                style="display:none;"
+            >
+
+            <script>
+
+                function loadFrame() {
+
+                    const image =
+                        document.getElementById("cameraFrame");
+
+                    image.src =
+                        "/frame?t=" + new Date().getTime();
+
+                    image.style.display = "block";
+                }
+
+            </script>
+
+        </body>
+        </html>
+        """
 
 @app.route("/iot/sub", methods=["POST"])
 def sub():
